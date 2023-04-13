@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" 
     integrity="sha512-Yek1/nxhGc9Xs3s3Kj2yWimlT0l24qwSZOf0+tLrHQK4W8VvGOMjhbck7nRPl6Emsw6zvKkTZpld3qZUQJHjxQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
     <title>Moniter Students</title>
 
     <style>
@@ -48,40 +48,64 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #45a049;
 }
-#delete-confirmation {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 16px;
-  z-index: 9999;
+.addBtn{
+  border: 1px solid rgb(116, 184, 14);
+  width: 35px;
+  display: flex;
+
+}
+.addBtn:hover{
+  background-color: #45a049;
+  color: white;
+}
+.addBtn  i{
+  font-size: 40px;
+  text-decoration: none;
+  font-weight: 800;
+  color: #4CAF50;
+  margin-left: 5px;
+  
+}
+.edtBtn a{
+text-decoration: none;
+border: 1px solid blue;
+padding: 10px;
+border-radius: 10px;
+}
+.edtBtn a:hover{
+  background-color: rgb(0, 0, 153);
+  color: white;
+}
+.dltBtn a{
+  text-decoration: none;
+border: 1px solid rgb(255, 0, 0);
+padding: 10px;
+border-radius: 10px;
+}
+.dltBtn a:hover{
+  background: rgb(196, 0, 0);
+  color: white;
+
+}
+.bp{
+  display: flex;
+  gap: 5px;
 }
 
-/* This style sets the background behind the dialog to be blurred */
-#student-list {
-  filter: blur(5px);
-}
-
-/* This style hides the delete confirmation dialog by default */
-#delete-confirmation.hidden {
-  display: none;
-}
     </style>
 </head>
 <body>
+  <div class="p">
+    <div class="c">
     <h1>Student List</h1>
 
 <form method="GET">
     <input type="text" name="search_term" placeholder="Search by name or roll number" value="{{ request.GET.search_term }}">
     <button type="submit">Search</button>
 </form>
-
-<a href="{% url 'student_create' %}"> Add  <i class="fas fa-plus"></i></a>
-
+<div class="addBtn">
+<a href="{% url 'student_create' %}">  <i class="fas fa-plus"></i> </a>
+</div> 
 <table>
     <thead>
         <tr>
@@ -100,8 +124,10 @@ button[type="submit"]:hover {
             <td>{{ student.email }}</td>
             <td>{{ student.phone_number }}</td>
             <td>
-                <a href="{% url 'student_update' student.id %}">Edit</a>
-                <a href="{% url 'student_delete' student.id %}">Delete</a>
+              <div class="bp">
+               <div class="edtBtn"><a href="{% url 'student_update' student.id %}">Edit </a></div> 
+                <div class="dltBtn"><a href="{% url 'student_delete' student.id %}">Delete</a></div>
+              </div>
             </td>
         </tr>
         {% empty %}
@@ -111,6 +137,7 @@ button[type="submit"]:hover {
         {% endfor %}
     </tbody>
 </table>
-
+</div>
+</div>
 </body>
 </html>

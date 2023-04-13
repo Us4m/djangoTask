@@ -1,7 +1,126 @@
-<h1>Update Student</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add/UPDATE</title>
+    <style>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
+        /* Input fields */
+input[type="text"], input[type="email"], input[type="tel"] {
+  background-color: #EFEFF4;
+  border: none;
+  border-radius: 5px;
+  color: #333333;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 70%;
+}
+
+/* Input field focus state */
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+  background-color: #FFFFFF;
+  border: 2px solid #007AFF;
+  outline: none;
+}
+
+/* Form labels */
+label {
+  color: #8E8E93;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+/* Submit button */
+button[type="submit"] {
+  background-color: #007AFF;
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 10px 22px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+/* Submit button hover state */
+button[type="submit"]:hover {
+  background-color: #0052CC;
+}
+
+/* Form container */
+.form-container {
+    
+  background-color: #F4F4F4;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 40px;
+}
+
+/* Form header */
+.form-header {
+  align-items: center;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+/* Form icon */
+.form-icon {
+  color: #007AFF;
+  font-size: 24px;
+  margin-right: 10px;
+}
+.p{
+    display: flex;
+    justify-content: center;
+}
+
+.cb {
+    display: flex;
+}
+.cb a{
+    background-color: #378a00;
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 10px 12px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.cb a:hover {
+  background-color: #02550d;
+}
+
+    </style>
+</head>
+<body>
+    <div class="p">
+<div class="c">
+    <h1>Add/Update Student</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+       <div class="cb"><a href="/">Cancel</a></div> 
+    </form>
+</div>
+    </div>
+
+ 
+</body>
+</html>
+
